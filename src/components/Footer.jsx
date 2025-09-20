@@ -1,4 +1,5 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = ({ footerAPI: { titles, links } }) => {
   return (
@@ -19,11 +20,13 @@ const Footer = ({ footerAPI: { titles, links } }) => {
             <h1 className="text-xl lg:text-lg md:text-base uppercase font-semibold">Categories</h1>
             <ul className="grid items-start gap-1">
               {links[1]?.map((link, j) => (
-                <li
-                  key={j}
-                  className="text-lg sm:text-md cursor-pointer hover:text-gray-300 transition-all"
-                >
-                  <a href={`/category/${link.link.replace(/\s+/g, '-').toLowerCase()}`}>{link.link}</a>
+                <li key={j}>
+                  <Link
+                    to={`/category/${link.link.replace(/\s+/g, '-').toLowerCase()}`} 
+                    className="text-lg sm:text-md cursor-pointer hover:text-gray-300 transition-all"
+                  >
+                    {link.link}
+                  </Link>
                 </li>
               ))}
             </ul>
